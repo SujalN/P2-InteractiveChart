@@ -39,8 +39,8 @@ public class RitviksiddhaPenchala extends Student
     public RitviksiddhaPenchala() {
         firstName="Ritviksiddha";
         lastName="Penchala";
-        myRow=1;
-        mySeat=2;
+        myRow=3;
+        mySeat=5;
        // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
        portraitFile="bad_pic_of_rit.jpg";
        standingFile="kilgoretrout-standing.jpg";
@@ -93,27 +93,31 @@ public class RitviksiddhaPenchala extends Student
      */
     public void answerQuestion(){
         String q=Greenfoot.ask("What would you like to know");
-        if (q.contains("hard")){
-            q=Greenfoot.ask("2D arrays, recursion, and merge sort... May I sit down?");
-        
-        } else if(q.contains("language")){
-            q=Greenfoot.ask("Java... May I sit down?");
-        } else {
-          q=Greenfoot.ask("I don't understand the question... May I sit down?"); 
+        boolean answered = false;
+        while(!answered){
+            if (q.contains("hard")){
+                q=Greenfoot.ask("2D arrays, recursion, and merge sort... May I sit down?");
+            
+            } else if(q.contains("language")){
+                q=Greenfoot.ask("Java... May I sit down?");
+            } else {
+              q=Greenfoot.ask("I don't understand the question... May I sit down?"); 
+            }
+             if (q.equals("yes")){
+                Greenfoot.delay(10);
+                sitDown();
+                answered=true;
+            } else if(q.equals("no")){
+                q = Greenfoot.ask("What would you like to know?");
+            }
         }
-         if (q.equals("yes")){
-            Greenfoot.delay(10);
-            sitDown();
-        } else if(q.equals("no")){
-            q = Greenfoot.ask("What would you like to know?");
-        }
-        
     }
     /**
      * This is a local method specific to the KilgoreTrout class used to animate the character once the image is clicked on.
      * You can write your own methods to perform your own animation for your character/avatar.
      */
     public void circleClass(){
+        /*
         setLocation(0,0);
          Greenfoot.delay(10);
          // move back
@@ -139,6 +143,21 @@ public class RitviksiddhaPenchala extends Student
         }      
            Greenfoot.delay(20);
            returnToSeat();
+           */
+       Greenfoot.delay(5);
+       for(int i=0; i<10; i++){
+           for(int j = 0; j<7; j++){
+               setLocation(i,j);
+               Greenfoot.delay(1);
+           }
+       }
+       for(int i = 10; i!= 0; i--){
+           for(int j = 7; j!=0; j--){
+               setLocation(i,j);
+               Greenfoot.delay(1);
+            }
+        }
+       returnToSeat();
     }
      public void myHobby(String s) {
          System.out.println(s);

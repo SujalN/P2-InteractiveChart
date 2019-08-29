@@ -40,7 +40,7 @@ public class Classroom extends World
         kilgoretrout.sitDown();
          
         RitviksiddhaPenchala ritvik = new RitviksiddhaPenchala();
-        addObject(ritvik, 1, 2);
+        addObject(ritvik, 5, 3);
         ritvik.sitDown();
         
 
