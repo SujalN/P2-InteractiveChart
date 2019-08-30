@@ -170,15 +170,16 @@ public class RitviksiddhaPenchala extends Student
         }
         
         System.out.println(positions);
-        
+        GreenfootImage rit_img = getImage();
         for(int i = 0; i<50; i++){
             int x = (int)(Math.random() * ((10 - 1) + 1)) + 1;
             int y = (int)(Math.random() * ((6 - 1) + 1)) + 1;
             setLocation(x,y);
-            Greenfoot.delay(10);
-            GreenfootImage rit_img = getImage();
+            Greenfoot.delay(5);
             rit_img.scale(positions[x][y], positions[y][x]);
+            rit_img.setTransparency((int)(Math.random() * ((255 - 1) + 1)) + 1);
         }
+         rit_img.setTransparency(255);
         
         
        
