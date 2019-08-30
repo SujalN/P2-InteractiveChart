@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.lang.Math;
 
 /**
  * Write a description of class TestStudent here.
@@ -13,7 +14,7 @@ public class RitviksiddhaPenchala extends Student
      * Constructors are special methods with the same exact name as the class name.  
      * Constructors to not have return types.
      * Constructors can be overloaded. This means we can call a constructor with different sets of parameter
-     *  lists to initalize for different conditions (depending on what constructors have been written.
+     * lists to initalize for different conditions (depending on what constructors have been written.
      * @param String f (firstname)
      * @param String l (lastname)
      * @param int r (row of seating arrangement)
@@ -31,6 +32,18 @@ public class RitviksiddhaPenchala extends Student
         setImage(portraitFile);
         sitting=true;
     }
+    public RitviksiddhaPenchala(int r, int s) {
+        firstName="Ritviksiddha";
+        lastName="Penchala";
+        myRow=r;
+        mySeat=s;
+       // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
+       portraitFile="bad_pic_of_rit.jpg";
+       standingFile="kilgoretrout-standing.jpg";
+        soundFile="kilgoretrout.wav";
+        setImage(portraitFile);
+        sitting=true;
+    }
     /**
      * Default constructor, if you don't pass in a name and seating location
      * Pay attention to how the row and seat variables set the location of the image.  1,1 is the first cell in the upper left
@@ -43,8 +56,8 @@ public class RitviksiddhaPenchala extends Student
         mySeat=5;
        // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
        portraitFile="bad_pic_of_rit.jpg";
-       standingFile="kilgoretrout-standing.jpg";
-        soundFile="kilgoretrout.wav";
+       standingFile="trash_walk.PNG";
+        soundFile="ritviksiddhapenchala.wav";
         setImage(portraitFile);
         sitting=true;
     }
@@ -144,7 +157,32 @@ public class RitviksiddhaPenchala extends Student
            Greenfoot.delay(20);
            returnToSeat();
            */
+          
+          
+       
        Greenfoot.delay(5);
+       
+       int[][] positions = new int[15][15];
+       for(int x =0; x<positions.length; x++){
+           for(int y = 0; y < positions[x].length; y++){
+               positions[x][y] = (int)(Math.random() * ((1000 - 50) + 1)) + 1;
+            }
+        }
+        
+        System.out.println(positions);
+        
+        for(int i = 0; i<50; i++){
+            int x = (int)(Math.random() * ((10 - 1) + 1)) + 1;
+            int y = (int)(Math.random() * ((6 - 1) + 1)) + 1;
+            setLocation(x,y);
+            Greenfoot.delay(10);
+            GreenfootImage rit_img = getImage();
+            rit_img.scale(positions[x][y], positions[y][x]);
+        }
+        
+        
+       
+       /*
        for(int i=0; i<10; i++){
            for(int j = 0; j<7; j++){
                setLocation(i,j);
@@ -158,6 +196,9 @@ public class RitviksiddhaPenchala extends Student
             }
         }
        returnToSeat();
+       */
+      
+      
     }
      public void myHobby(String s) {
          System.out.println(s);

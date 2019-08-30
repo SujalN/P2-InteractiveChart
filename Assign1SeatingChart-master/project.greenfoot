@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Thu Aug 29 09:00:02 PDT 2019
+#Fri Aug 30 09:11:14 PDT 2019
 editor.fx.0.height=1098
 target2.width=140
 target8.name=Teacher
@@ -9,7 +9,7 @@ target5.naviview.expanded=true
 class.Student.superclass=greenfoot.Actor
 target1.type=ClassTarget
 target7.showInterface=false
-mainWindow.height=1098
+mainWindow.height=1084
 target6.typeParameters=
 class.Teacher.superclass=greenfoot.Actor
 target1.height=50
@@ -46,7 +46,7 @@ target5.name=MrKaehms
 class.NumberOfSiblings.superclass=
 world.lastInstantiated=Classroom
 publish.locked=true
-mainWindow.width=1938
+mainWindow.width=1924
 readme.width=47
 target9.name=NumberOfSiblings
 target5.height=50
