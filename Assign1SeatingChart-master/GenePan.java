@@ -15,13 +15,9 @@ public class GenePan extends Student implements SpecialInterestOrHobby
     
     /**
      * Constructor for the Gene Pan class.
-     * Constructors can be overloaded. This means we can call a constructor with different sets of parameter
-     *  lists to initalize for different conditions (depending on what constructors have been written.
-     * @param String f (firstname)
-     * @param String l (lastname)
-     * @param int r (row of seating arrangement)
-     * @param int s (seat number within row seating arrangement)
-     * 
+     * This constructor is overloaded with another constructor below. If this function is called upon including the parameters below,
+     * it will call upon this function. If no parameters are specified, it will call upon the other function. This function allows for
+     * the GenePan object to be created in a different place than the default.
      */
     public GenePan(String f, String l, int r, int s) {
         firstName=f;
@@ -36,9 +32,8 @@ public class GenePan extends Student implements SpecialInterestOrHobby
         sitting=true;
     }
     /**
-     * Default constructor, if you don't pass in a name and seating location
-     * Pay attention to how the row and seat variables set the location of the image.  1,1 is the first cell in the upper left
-     * of the classroom.
+     * Default constructor. If no parameters are specified when creating a GenePan object, it will set certain default options.
+     * It sets my name, row, seat, and image files.
      */
     public GenePan() {
         firstName="Gene";
@@ -69,7 +64,7 @@ public class GenePan extends Student implements SpecialInterestOrHobby
                 getName();
                 sayName(soundFile);
             
-                myHobby("I like to sleep! Way too much.");
+                myHobby("I like to sleep!");
                 goPoof();  // Gene Pan's unique method. I disappear with a comic-like "poof"
             }
             else {
@@ -88,9 +83,10 @@ public class GenePan extends Student implements SpecialInterestOrHobby
     }
     /**
      * This method needs to allow the user to interact with the student through a question and answer interface, and provide
-     * some mechanism that allows the student to sit down once the Q&A session ends.  You can use this basic model, or come up
-     * with some additional class and object that represents a blackboard, or a talking cartoon bubble etc. If you provide extra
-     * classes, make sure to fully document so other students can use the same interface.
+     * some mechanism that allows the student to sit down once the Q&A session ends. There are two possible questions to ask:
+     * "What was hard?" and "How's your day?". If the student is asked "What was hard?", it switches a boolean called followUp
+     * to true. If this boolean is true, the answerFollowUp function is called if the user does not allow the student to sit.
+     * This allows a second set of follow-up questions to be asked. See that function's documentation for more detail.
      */
     public void answerQuestion(){
         String q=Greenfoot.ask("What would you like to know");
@@ -123,7 +119,9 @@ public class GenePan extends Student implements SpecialInterestOrHobby
         }
     }
     /**
-     * This method is to allow for follow-up questions after being asked about what was hard in AP CSA
+     * This method is to allow for follow-up questions after being asked about what was hard in AP CSA.
+     * It has one question for each of the 5 topics I mentioned as hard. It has the same question-answer interface as the normal
+     * answering function, but the questions are different. This is to allow for clearer organization.
      */
     
     public void answerFollowUp(){
