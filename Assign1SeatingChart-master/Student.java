@@ -21,6 +21,11 @@ public abstract class Student extends Actor
  //  public String imgFile;   // These will be created in subclass as firstName.toLowerCase()+
    public String portraitFile; // image used when sitting
    public String standingFile; // image used when standing
+   public String standingFile1; // image used when standing
+   public String standingFile2; // image used when standing
+   public int mouseX;
+   public int mouseY;
+   public Object mouse;
    public String soundFile; //      firstName.toLowerCase()+lastName.toLowerCase()+".ext"; (.wav or .jpg)
    Classroom clas = (Classroom) getWorld();
    public void setRow(int r){

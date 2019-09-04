@@ -39,8 +39,9 @@ public class Classroom extends World
         addObject(kilgoretrout, 1, 1);
         kilgoretrout.sitDown();
          
-        
-
+        DerekXu derekxu = new DerekXu("Derek", "Xu", 5, 5);
+        addObject(derekxu, 5, 5);
+        derekxu.sitDown();
 
     }  
 }
