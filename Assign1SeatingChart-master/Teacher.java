@@ -16,7 +16,6 @@ public abstract class Teacher extends Actor
    
    public void sayName(String myNameFile){
         Greenfoot.playSound(myNameFile);
-        
     }
     
     public void sitDown(){

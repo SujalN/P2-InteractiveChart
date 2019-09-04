@@ -31,7 +31,8 @@ public abstract class Student extends Actor
        mySeat=s;
     }
     
-    public abstract void  getName(); //This is an abstract methods. You will have to implement it
+    public abstract void  
+    getName(); //This is an abstract methods. You will have to implement it
                                      // in your own class file. See KilgoreTrout for an example
      public abstract void  answerQuestion(); //This is an abstract method. You will have to implement it
                                             // in your own class file.
@@ -60,6 +61,7 @@ public abstract class Student extends Actor
     }
     
     public void returnToSeat(){
+        setRotation(0);
         setLocation(mySeat,myRow);
     }
     public void sitDown(){
