@@ -56,7 +56,7 @@ public class RitviksiddhaPenchala extends Student
         mySeat=5;
        // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
        portraitFile="bad_pic_of_rit.jpg";
-       standingFile="trash_walk.PNG";
+       //standingFile="trash_walk.PNG";
         soundFile="ritviksiddhapenchala.wav";
         setImage(portraitFile);
         sitting=true;
@@ -74,7 +74,7 @@ public class RitviksiddhaPenchala extends Student
         if(Greenfoot.mouseClicked(this)){
             if (sitting){
                 sitting=false;
-                setImage(standingFile);
+                //setImage(standingFile);
                 System.out.println(""); // Print a blank line to create space between any student output.
                 getName();
                 sayName(soundFile);
@@ -116,7 +116,7 @@ public class RitviksiddhaPenchala extends Student
                 q=Greenfoot.ask("I thought that concepts like abstract classes, sort algorithms, and search algorithms. Ask me something about these concepts...");
                 while(!concept_check_complete){
                     if(q.contains("abstract")){
-                        q=Greenfoot.ask("An abstract class is ... What would you like to know?");
+                        q=Greenfoot.ask("An abstract class is classes that cannot be instantiated. They are used as a way to share code when multiple of its subclasses are likely to share code. What would you like to know?");
                         concept_check_complete = true;
                     } else if(q.contains("sort")){
                         q=Greenfoot.ask("Sort algorithms go through a data set and organize it (sort it) into a format the search algorithm can understand later. What would you like to know?");
