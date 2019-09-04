@@ -98,6 +98,9 @@ public class LacPhongNguyen extends Student implements SpecialInterestOrHobby
             q=Greenfoot.ask("2D arrays, recursion, and merge sort... May I sit down?");
             q.toLowerCase();
         }
+        if (q.contains("yes")){
+            sitDown();
+        }
         if ((q.contains("hi"))||(q.contains("hello"))){
             q=Greenfoot.ask("Well hello there! I'm Lac-Phong Nguyen. How are you?");
             q.toLowerCase();
@@ -129,10 +132,12 @@ public class LacPhongNguyen extends Student implements SpecialInterestOrHobby
      * You can write your own methods to perform your own animation for your character/avatar.
      */
     public void circleClass(){
-        ArrayList<Integer> list = new ArrayList<Integer>();
+        int[][] list = new int[10][10];
         for (int i=0;i<10;i++){
-            list.add((int)Math.random()*10+1);
+            for (int n=0;n<10;n++){
+            list[i][n] = (int)Math.random()*10+1;
         }
+       }
         setLocation(1,3);
         Greenfoot.delay(10);
         // move right
@@ -159,11 +164,9 @@ public class LacPhongNguyen extends Student implements SpecialInterestOrHobby
             turn(100);
             Greenfoot.delay(6);
         }
-        for (int i=0;i<6;i++){
-            setLocation(i, i+1);
-            turn(list[i]);
-            setLocation(i, i+1);
-            turn(list.);
+        for (int i=0; i<10;i++){
+            turn(list[(int)Math.random()*10+1][(int)Math.random()*10+1]);
+            Greenfoot.delay(6);
         }
         Greenfoot.delay(20);
         returnToSeat();
