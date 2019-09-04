@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Mr. Kaehms
  * @version 2.0 Aug 13, 2019
  */
-public class DaylenBoen extends Student implements SpecialInterestOrHobby
+public class DaylenBoen extends Student implements SpecialInterestOrHobby, NumberOfSiblings
 {
 
     /**
@@ -65,7 +65,7 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby
                 getName();
                 sayName(soundFile);
             
-                myHobby("BLUEFACE BABY YEAH AIGHT");
+                myHobby("I read a lot of comic books...");
             // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
             // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
             // Call the sitDown() method to move back  to your seat
@@ -95,18 +95,42 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby
     public void answerQuestion(){
         String q=Greenfoot.ask("What would you like to know");
         if (q.contains("hard")){
-            q=Greenfoot.ask("Interfaces, ");
-        
+            q=Greenfoot.ask("Interfaces, 2D arrays, constructors, recursion, and maybe static vs instance variables. May I sit down?");
+            if (q.contains("yes")){
+                Greenfoot.delay(10);
+                sitDown();
+            }
+            else if (q.contains("no")) {
+                q=Greenfoot.ask("What else would you like to know?");
+                if (q.contains("Interfaces") || q.contains("interfaces")){
+                   q=Greenfoot.ask("I just have a hard time understanding the concept, and when/why you should use it..."); 
+                }
+            }
         }
-        else {
-          q=Greenfoot.ask("I don't understand the question... May I sit down?"); 
+        else if(q.contains("brother") || q.contains("brothers") ){
+            q=Greenfoot.ask("I have " + numberOfBrothers() + " brothers. It would be cool to have one though. May I sit down?");
         }
-         if (q.equals("yes")){
-            Greenfoot.delay(10);
-            sitDown();
+        else if(q.contains("sister") || q.contains("sisters")){
+            q=Greenfoot.ask("I have " + numberOfSisters() + " sister. She's a freshman now at this school. May I sit down?");
+        }
+        else if(q.contains("siblings")){
+            q=Greenfoot.ask("I have " + numberOfSiblings() + " sibling. May I sit down?");
         }
         
     }
+    
+    public int numberOfSisters() {
+        return 1;
+    }
+    
+    public int numberOfSiblings() {
+        return 1;
+    }
+    
+    public int numberOfBrothers() {
+        return 0;
+    }
+    
     /**
      * This is a local method specific to the KilgoreTrout class used to animate the character once the image is clicked on.
      * You can write your own methods to perform your own animation for your character/avatar.
