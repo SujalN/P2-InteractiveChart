@@ -60,6 +60,8 @@ public class RitviksiddhaPenchala extends Student
         soundFile="ritviksiddhapenchala.wav";
         setImage(portraitFile);
         sitting=true;
+       numStudents ++;
+       System.out.println(numStudents);
     }
     
      /**
@@ -105,15 +107,32 @@ public class RitviksiddhaPenchala extends Student
      * classes, make sure to fully document so other students can use the same interface.
      */
     public void answerQuestion(){
-        String q=Greenfoot.ask("What would you like to know");
+        String q=Greenfoot.ask("What would you like to know?");
         boolean answered = false;
+        boolean concept_check_complete = false;
         while(!answered){
             if (q.contains("hard")){
-                q=Greenfoot.ask("2D arrays, recursion, and merge sort... May I sit down?");
-            
+                concept_check_complete = false;
+                q=Greenfoot.ask("I thought that concepts like abstract classes, sort algorithms, and search algorithms. Ask me something about these concepts...");
+                while(!concept_check_complete){
+                    if(q.contains("abstract")){
+                        q=Greenfoot.ask("An abstract class is ... What would you like to know?");
+                        concept_check_complete = true;
+                    } else if(q.contains("sort")){
+                        q=Greenfoot.ask("Sort algorithms go through a data set and organize it (sort it) into a format the search algorithm can understand later. What would you like to know?");
+                        concept_check_complete = true;
+                    } else if(q.contains("search")){
+                        q=Greenfoot.ask("Search algorithms are a way of looking through large, sorted data sets to find a specific value. Things like search engines or databases use this. What would you like to know?");
+                        concept_check_complete = true;
+                    } else{
+                        q = Greenfoot.ask("I don't think that was one of the concepts I listed. Could you ask a question about abstract classes, sort algorithms, or search algorithms?");
+                    }
+                }
             } else if(q.contains("language")){
-                q=Greenfoot.ask("Java... May I sit down?");
-            } else {
+                q=Greenfoot.ask("I use JavaScript most frequently, but Java was the first language I learne when I first started coding years ago. What would you like to know?");
+            } else if(q.contains("hobbies")){
+                q=Greenfoot.ask("My hobbies include coding, playing videogames, robotics, reading, watching TV, and listening to music. What would you like to know?");
+            }else {
               q=Greenfoot.ask("I don't understand the question... May I sit down?"); 
             }
              if (q.equals("yes")){
@@ -130,35 +149,6 @@ public class RitviksiddhaPenchala extends Student
      * You can write your own methods to perform your own animation for your character/avatar.
      */
     public void circleClass(){
-        /*
-        setLocation(0,0);
-         Greenfoot.delay(10);
-         // move back
-        for (int i=1;i<=5;i++){
-            setLocation(9,i);
-            Greenfoot.delay(10);
-        }    
-              // move Forward
-        for (int i=5;i>=0;i--){
-            setLocation(0,i);
-            Greenfoot.delay(10);
-        }   
-        // move right
-        for (int i=1;i<=9;i++){
-            setLocation(i,0);
-            Greenfoot.delay(10);
-        }
-          
-         // move left
-        for (int i=9;i>=0;i--){
-            setLocation(i,5);
-            Greenfoot.delay(10);
-        }      
-           Greenfoot.delay(20);
-           returnToSeat();
-           */
-          
-          
        
        Greenfoot.delay(5);
        
@@ -169,7 +159,6 @@ public class RitviksiddhaPenchala extends Student
             }
         }
         
-        System.out.println(positions);
         GreenfootImage rit_img = getImage();
         for(int i = 0; i<50; i++){
             int x = (int)(Math.random() * ((10 - 1) + 1)) + 1;
@@ -180,26 +169,7 @@ public class RitviksiddhaPenchala extends Student
             rit_img.setTransparency((int)(Math.random() * ((255 - 1) + 1)) + 1);
         }
          rit_img.setTransparency(255);
-        
-        
-       
-       /*
-       for(int i=0; i<10; i++){
-           for(int j = 0; j<7; j++){
-               setLocation(i,j);
-               Greenfoot.delay(1);
-           }
-       }
-       for(int i = 10; i!= 0; i--){
-           for(int j = 7; j!=0; j--){
-               setLocation(i,j);
-               Greenfoot.delay(1);
-            }
-        }
-       returnToSeat();
-       */
-      
-      
+
     }
      public void myHobby(String s) {
          System.out.println(s);
