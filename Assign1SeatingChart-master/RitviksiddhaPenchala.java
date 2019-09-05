@@ -7,7 +7,7 @@ import java.lang.Math;
  * @Ritviksiddha Penchala
  * @09/05/2019
  */
-public class RitviksiddhaPenchala extends Student
+public class RitviksiddhaPenchala extends Student implements SpecialInterestOrHobby 
 {
    /**
      * Constructor for the Ritviksiddha Penchala class.
@@ -138,6 +138,8 @@ public class RitviksiddhaPenchala extends Student
             } else if(q.contains("students")){
                 // uses the private numStudents int from the Students class
                 q=Greenfoot.ask("There are " + numStudents + " students in the class. What would you like to know?");
+            } else if(q.contains("sibling")){
+                q=Greenfoot.ask("I have one younger sister. What else would you like to know?");
             }else {
                 // default question asked so the conversation keeps going
               q=Greenfoot.ask("I don't understand the question... May I sit down?"); 
@@ -178,8 +180,9 @@ public class RitviksiddhaPenchala extends Student
             // random location
             setLocation(x,y);
             Greenfoot.delay(5);
+            // random size (from 2DArray)
             rit_img.scale(positions[x][y], positions[y][x]);
-            // random transparency (from 2DArray)
+          
             rit_img.setTransparency((int)(Math.random() * ((255 - 1) + 1)) + 1);
         }
          rit_img.setTransparency(255);
