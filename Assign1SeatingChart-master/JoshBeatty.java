@@ -120,8 +120,7 @@ public class JoshBeatty extends Student implements SpecialInterestOrHobby, Numbe
      * You can write your own methods to perform your own animation for your character/avatar.
      */
     public void coolMethod(){
-        //int numberRotations = (int)(Math.random() * (8)) + 3;
-        int numberRotations = 11;
+        int numberRotations = (int)(Math.random() * (8)) + 3;
         int mat[][] = new int[10 * numberRotations+1][3];
         Random r = new Random();
         GreenfootImage bg = getWorld().getBackground();
