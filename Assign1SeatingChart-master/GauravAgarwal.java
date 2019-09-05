@@ -1,3 +1,4 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.lang.Math;
 /**
@@ -8,8 +9,9 @@ import java.lang.Math;
  */
 public class GauravAgarwal extends Student implements SpecialInterestOrHobby
 {
-
-    /**
+   int array2d [] [] = new int [6] [10];
+   boolean couldNotSit = false;
+   /**
      * Constructor for the KilgoreTrout class.
      * Constructors are special methods with the same exact name as the class name.  
      * Constructors to not have return types.
@@ -20,8 +22,8 @@ public class GauravAgarwal extends Student implements SpecialInterestOrHobby
      * @param int r (row of seating arrangement)
      * @param int s (seat number within row seating arrangement)
      * 
-     */
-    public GauravAgarwal(String f, String l, int r, int s) {
+   */
+   public GauravAgarwal(String f, String l, int r, int s) {
         firstName=f;
         lastName=l;
         myRow=r;
@@ -31,13 +33,13 @@ public class GauravAgarwal extends Student implements SpecialInterestOrHobby
         soundFile=f.toLowerCase()+l.toLowerCase()+".mp3";  // Make sure to name your sound files firstlast.wav, all lowercase!!!
         setImage(portraitFile);
         sitting=true;
-    }
-    /**
+   }
+   /**
      * Default constructor, if you don't pass in a name and seating location
      * Pay attention to how the row and seat variables set the location of the image.  1,1 is the first cell in the upper left
      * of the classroom.
      */
-    public GauravAgarwal() {
+   public GauravAgarwal() {
         firstName="Gaurav";
         lastName="Agarwal";
         myRow=1;
@@ -48,18 +50,19 @@ public class GauravAgarwal extends Student implements SpecialInterestOrHobby
         soundFile= "Sounds/"+firstName.toLowerCase()+lastName.toLowerCase()+".mp3";
         setImage(portraitFile);
         sitting=true;
-    }
+   }
     
-     /**
+   /**
      * Act - do whatever the KilgoreTrout actor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
-     */   
-    public void act() 
+   */   
+   public void act() 
     {
         // Add your action code here.
-        if(Greenfoot.mouseClicked(this)){
-            if (sitting){
+        if(Greenfoot.mouseClicked(this) || couldNotSit == true){
+            if (sitting || couldNotSit == true){
                 sitting=false;
+                couldNotSit = false;
                 setImage(standingFile);
                 System.out.println(""); // Print a blank line to create space between any student output.
                 getName();
@@ -75,7 +78,6 @@ public class GauravAgarwal extends Student implements SpecialInterestOrHobby
             }
             else {
                 answerQuestion();
-                sitDown();
             }
                     
         }
@@ -94,47 +96,57 @@ public class GauravAgarwal extends Student implements SpecialInterestOrHobby
      * classes, make sure to fully document so other students can use the same interface.
      */
     public void answerQuestion(){
-        int flag1 = 0;
+        boolean firstQuestion = false;
+        boolean canUnderstand = false;
         String q=Greenfoot.ask("What would you like to know").toLowerCase();
         if (q.contains("hard")){
-            q=Greenfoot.ask("I found 2D arrays, interfaces, the syntax, merge sort, and variables in memory hard. Which one would you like to know more about?");
-            flag1 = 1;
+            q=Greenfoot.ask("I found 2D arrays, interfaces, remembering to put the semicolon, merge sort, and overloading hard. Which one would you like to know more about?");
+            firstQuestion = true;
         }
-        if (q.contains("hard") && flag1 == 1){
-            q=Greenfoot.ask("I found 2D arrays, interfaces, the syntax, merge sort, and variables in memory hard. Which one would you like to know more about?");
+        if (q.contains("array") && firstQuestion == true){
+            q=Greenfoot.ask("A 2D array is an array of arrays! I actually used one to move around! Can I sit down now?");
+            canUnderstand = true;
         }
-        if (q.contains("array") && flag1 == 1){
-            q=Greenfoot.ask("I found 2D arrays hard because they were new to me. Can I sit down now?");
-            flag1 = 0;
+        if (q.contains("interface") && firstQuestion == true){
+            q=Greenfoot.ask("Java is similar to a class, but not quite; it's a collection of abstract methods. Can I sit down now?");
+            canUnderstand = true;
         }
-        if (q.contains("interface") && flag1 == 1){
-            q=Greenfoot.ask("I found interfaces because I have never seen something like that before. Can I sit down now?");
-            flag1 = 0;
+        if (q.contains("semicolon") && firstQuestion == true){
+            q=Greenfoot.ask("Every command in java requires a semicolon at the end. Can I sit down now?");
+            canUnderstand = true;
         }
-        if (q.contains("syntax") && flag1 == 1){
-            q=Greenfoot.ask("I found syntax hard because I'm used to Python syntax. Can I sit down now?");
-            flag1 = 0;
+        if (q.contains("merge") && firstQuestion == true){
+            q=Greenfoot.ask("Merge sort is a divide and conquer algorithm that can sort a list from smallest to greatest. Can I sit down now?");
+            canUnderstand = true;
         }
-        if (q.contains("merge") && flag1 == 1){
-            q=Greenfoot.ask("I found merge sort hard because I'm not used to it. Can I sit down now?");
-            flag1 = 0;
+        if (q.contains("overload") && firstQuestion == true){
+            q=Greenfoot.ask("Overloading a method lets two classes with the same name exist, if their argument lists are different. Can I sit down now?");
+            canUnderstand = true;
         }
-        if (q.contains("variable") && flag1 == 1){
-            q=Greenfoot.ask("I found variable in memory hard because they all act differently. Can I sit down now?");
-            flag1 = 0;
+        if (!canUnderstand){
+            q=Greenfoot.ask("I don't understand the question. Can I sit down?");
+            if (q.equals("yes")){
+                Greenfoot.delay(10);
+                sitDown();
+            }
+            else{
+                couldNotSit = true;
+                act();
+            }
         }
-        if (flag1 == 1){
-          q=Greenfoot.ask("I don't understand the question. Can I sit down?"); 
-          flag1 = 0;
+        if (canUnderstand){
+            if (q.equals("yes")){
+                Greenfoot.delay(10);
+                sitDown();
+            }
+            else{
+                couldNotSit = true;
+                act();
+            }
         }
-        if (q.equals("yes") && flag1 == 0){
-            Greenfoot.delay(10);
-            sitDown();
-        }
-        
     }
-    public int randomWithRange(int min, int max)
-    {
+    
+    public int randomWithRange(int min, int max){
     int rangevalue = (max - min) + 1;     
     return (int)(Math.random() * rangevalue) + min;
     }
@@ -147,12 +159,14 @@ public class GauravAgarwal extends Student implements SpecialInterestOrHobby
         setLocation(0,0);
         Greenfoot.delay(5);
         // move right
-        for (int i=1;i<30;i++){
-            setLocation(randomWithRange(0,10),randomWithRange(0,5));
-            setRotation((12 * i));
-            Greenfoot.delay(5);
+        for (int i = 0; i < array2d.length; i++){
+            for (int j = 0; j < array2d[0].length; j++){
+            setLocation(i,j);
+            setRotation(randomWithRange(0,360));
+            Greenfoot.delay(2);
+            }
         }
-        Greenfoot.delay(20);
+        Greenfoot.delay(2);
         returnToSeat();
     }
      public void myHobby(String s) {
