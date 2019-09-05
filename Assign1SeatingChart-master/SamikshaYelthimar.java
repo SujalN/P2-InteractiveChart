@@ -1,27 +1,24 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The KilgoreTrout class can be used as a model for your own class that represents you and your seating location in AP CSA
- * 
- * @author Mr. Kaehms
- * @version 2.0 Aug 13, 2019
+ * The child class SamikshaYelthimar is an extension of the parent class Student. 
+ * It has the constructor SamikshaYelthimar, 
+ * @author Samiksha Yelthimar Period 2 AP CSA
+ * @version 9/5/2019
  */
-public class KilgoreTrout extends Student implements SpecialInterestOrHobby
+public class SamikshaYelthimar extends Student implements SpecialInterestOrHobby
 {
 
     /**
-     * Constructor for the KilgoreTrout class.
-     * Constructors are special methods with the same exact name as the class name.  
-     * Constructors to not have return types.
-     * Constructors can be overloaded. This means we can call a constructor with different sets of parameter
-     *  lists to initalize for different conditions (depending on what constructors have been written.
-     * @param String f (firstname)
-     * @param String l (lastname)
-     * @param int r (row of seating arrangement)
-     * @param int s (seat number within row seating arrangement)
+     * Constructor for the SamikshaYelthimar class.
+     * This constructor also sets the variables that set the portrait, standing, and sound files. It also calls the method setImage to the value of portraitFile, and initializes the object to be "sitting down".
+     * @param String f sets the first name of the SamikshaYelthimar object to Samiksha
+     * @param String l sets the last name of the SamikshaYelthimar object to Yelthimar
+     * @param int r Sets the row of seating arrangement to the correct new location
+     * @param int s Sets the seat number within the row seating arrangement
      * 
      */
-    public KilgoreTrout(String f, String l, int r, int s) {
+    public SamikshaYelthimar(String f, String l, int r, int s) {
         firstName=f;
         lastName=l;
         myRow=r;
@@ -32,27 +29,12 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
         setImage(portraitFile);
         sitting=true;
     }
-    /**
-     * Default constructor, if you don't pass in a name and seating location
-     * Pay attention to how the row and seat variables set the location of the image.  1,1 is the first cell in the upper left
-     * of the classroom.
-     */
-    public KilgoreTrout() {
-        firstName="Kilgore";
-        lastName="Trout";
-        myRow=1;
-        mySeat=1;
-       // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
-       portraitFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
-       standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
-        soundFile=firstName.toLowerCase()+ lastName.toLowerCase()+".wav";
-        setImage(portraitFile);
-        sitting=true;
-    }
-    
+   
      /**
-     * Act - do whatever the KilgoreTrout actor wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * The act method is a void method that defines what the SamikshaYelthimar actor will do.
+     * This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
+     * There is a nested if statement in which if the SamikshaYelthimar actor is sitting down and then the mouse clicks on it, then the variable sitting will be set to file, the standing up image will be projected, and the audiofile saying the name will be laced
+     *If the the mouse is not clicked on, the actor will excecute the answerQuestion() method and the sitDown() method.
      */   
     public void act() 
     {
@@ -81,20 +63,22 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
     } 
     
     /**
-     * Prints the first and last name to the console
+     * This void function prints the first and last name to the console, along with the string "My name is".
      */
     public void getName(){
         System.out.println("My name is " + firstName + " " + lastName);
     }
+    
     /**
-     * This method needs to allow the user to interact with the student through a question and answer interface, and provide
-     * some mechanism that allows the student to sit down once the Q&A session ends.  You can use this basic model, or come up
-     * with some additional class and object that represents a blackboard, or a talking cartoon bubble etc. If you provide extra
-     * classes, make sure to fully document so other students can use the same interface.
+     * This void function allows the user to interact with the student through a question and answer interface, and provides a mechanism that allows the student to sit down once the Q&A session ends.  \
+     * It contains a string operator that asks the question "Would you like to know what I found challenging about the AP Computer Science Summer Homework?".
+     * Then, it contains several if statements (and in some cases else statements) that take the responses to the question, does character match, and then returns a response.
+     * The function completes
      */
     public void answerQuestion(){
-        String q=Greenfoot.ask("What did you find challenging about the AP Computer Science Summer Homework?");
-        if (q.contains("arrays")){
+       
+        String q=Greenfoot.ask("Would you like to know what I found challenging about the AP Computer Science Summer Homework?");
+        if (q.contains("yes")){
             q=Greenfoot.ask("To me, the concept of an abstract class was confusing. Working with arraylists and operating on 2-D arrays was also difficult initially. Also, recursion and  the concept of overloading methods were challenging. Which one would you like to know more about?");
         
         }
@@ -110,11 +94,15 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
         
         }
         if (q.contains("arraylists")){
-            q=Greenfoot.ask(" thought it was difficult to create for loops with arraylists.");
+            q=Greenfoot.ask("I thought it was difficult to create for loops with arraylists. May I please sit down?");
         
         }
         if (q.contains("recursion")){
-            q=Greenfoot.ask(" may I please sit down?");
+            q=Greenfoot.ask("Tracing code with recursion was difficult because there was a lot to keep track of at once. May I please sit down?");
+        
+        }
+        if (q.contains("class")){
+            q=Greenfoot.ask("I was unsure about when to implement a concrete class and when to implement an abstract class. Also, I was confused about the difference between an abstract class and an interface. May I please sit down?");
         
         }
          if (q.equals("yes")){
@@ -123,6 +111,21 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
         }
         
         
+        
+        /*
+        String q=Greenfoot.ask("What would you like to know");
+        if (q.contains("hard")){
+            q=Greenfoot.ask("2D arrays, recursion, and merge sort... May I sit down?");
+        
+        }
+        else {
+          q=Greenfoot.ask("I don't understand the question... May I sit down?"); 
+        }
+         if (q.equals("yes")){
+            Greenfoot.delay(10);
+            sitDown();
+        }
+      */       
     }
     /**
      * This is a local method specific to the KilgoreTrout class used to animate the character once the image is clicked on.
@@ -130,9 +133,9 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
      */
     public void circleClass(){
         setLocation(0,0);
-         Greenfoot.delay(10);
-         
-        int move1 [][]=new int [2][3];
+        Greenfoot.delay(10);
+        
+        int move1 [][]=new int [2][2];
         for (int i=0; i<move1.length; i++){
             
             for (int j=1;j<=9;j++){
@@ -146,20 +149,23 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
         }      
          // move left
         for (int j=9;j>=0;j--){
-            setLocation(j,5);
+            // setLocation(j,5);
+            setLocation(Greenfoot.getRandomNumber(10),5);
             Greenfoot.delay(10);
         }      
               // move Forward
         for (int j=5;j>=0;j--){
-            setLocation(0,j);
+            setLocation(0,Greenfoot.getRandomNumber(10));
+            //setLocation(0,j);
             Greenfoot.delay(10);
         }   
           Greenfoot.delay(10);
+       
           returnToSeat();
         }
+        // move right
         
         /*
-        // move right
         for (int i=1;i<=9;i++){
             setLocation(i,0);
             Greenfoot.delay(10);
@@ -179,10 +185,10 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
             setLocation(0,i);
             Greenfoot.delay(10);
         }   
-        */
-       
-           //Greenfoot.delay(20);
-           // returnToSeat();
+        
+           Greenfoot.delay(20);
+           returnToSeat();
+           */
     }
      public void myHobby(String s) {
          System.out.println(s);
