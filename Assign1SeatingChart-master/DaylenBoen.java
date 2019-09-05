@@ -1,11 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The KilgoreTrout class can be used as a model for your own class that represents you and your seating location in AP CSA
+ * Class which puts my 'character' into the proper position in the class 
  * 
- * @author Mr. Kaehms
- * @version 2.0 Aug 13, 2019
- */
+**/
 public class DaylenBoen extends Student implements SpecialInterestOrHobby, NumberOfSiblings
 {
 
@@ -103,18 +101,46 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
             else if (q.contains("no")) {
                 q=Greenfoot.ask("What else would you like to know?");
                 if (q.contains("Interfaces") || q.contains("interfaces")){
-                   q=Greenfoot.ask("I just have a hard time understanding the concept, and when/why you should use it..."); 
+                   q=Greenfoot.ask("I just have a hard time understanding the concept, and when/why you should use it...May I sit down?"); 
+                   if (q.contains("yes")){
+                       Greenfoot.delay(10);
+                       sitDown();
+                   }
+                   else if(q.contains("no")){
+                       answerQuestion();
+                   }
                 }
             }
         }
         else if(q.contains("brother") || q.contains("brothers") ){
             q=Greenfoot.ask("I have " + numberOfBrothers() + " brothers. It would be cool to have one though. May I sit down?");
+                if (q.contains("yes")){
+                    Greenfoot.delay(10);
+                    sitDown();
+                }
+                else if(q.contains("no")){
+                    answerQuestion();
+                }
         }
         else if(q.contains("sister") || q.contains("sisters")){
             q=Greenfoot.ask("I have " + numberOfSisters() + " sister. She's a freshman now at this school. May I sit down?");
+                if (q.contains("yes")){
+                    Greenfoot.delay(10);
+                    sitDown();
+                }
+                else if(q.contains("no")){
+                    answerQuestion();
+                }
         }
         else if(q.contains("siblings")){
             q=Greenfoot.ask("I have " + numberOfSiblings() + " sibling. May I sit down?");
+                if (q.contains("yes")){
+                    Greenfoot.delay(10);
+                    sitDown();
+                }
+                else if(q.contains("no")){
+                    answerQuestion();
+                }
         }
         
     }
