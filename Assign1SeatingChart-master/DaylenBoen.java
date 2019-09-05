@@ -8,7 +8,7 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
 {
 
     /**
-     * Constructor for the KilgoreTrout class.
+     * Constructor for the DaylenBoen class.
      * Constructors are special methods with the same exact name as the class name.  
      * Constructors to not have return types.
      * Constructors can be overloaded. This means we can call a constructor with different sets of parameter
@@ -43,13 +43,13 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
        // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
        portraitFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
        standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"sitting" + ".jpg";
-        soundFile=firstName.toLowerCase()+ lastName.toLowerCase()+".wav";
+        soundFile="daylenboen.wav";
         setImage(portraitFile);
         sitting=true;
     }
     
      /**
-     * Act - do whatever the KilgoreTrout actor wants to do. This method is called whenever
+     * Act - do whatever the DaylenBoen actor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */   
     public void act() 
@@ -68,7 +68,7 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
             // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
             // Call the sitDown() method to move back  to your seat
             
-                blinkClass();  // Kilgore Trount's special method... Please write one of your own. You can use this, but please modify it and be creative.
+                slideClass();  // Own personal movement class
             }
             else {
                 answerQuestion();
@@ -161,7 +161,7 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
      * This is a local method specific to the KilgoreTrout class used to animate the character once the image is clicked on.
      * You can write your own methods to perform your own animation for your character/avatar.
      */
-    public void blinkClass(){
+    public void slideClass(){
         int tempRow; //used to change row of image
         int tempSeat; //used to change seat of image
         //Math.random is used to generate a random number with a minium of row, column 1,1 and a maximum of row, column 7, 7. It is used
