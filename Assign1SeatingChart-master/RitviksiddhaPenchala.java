@@ -2,15 +2,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.lang.Math;
 
 /**
- * Write a description of class TestStudent here.
+ * The class RitviksiddhaPenchala is a subclass of the Student class that has specific information and methods about Ritviksiddha Penchala.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Ritviksiddha Penchala
+ * @09/05/2019
  */
 public class RitviksiddhaPenchala extends Student
 {
    /**
-     * Constructor for the KilgoreTrout class.
+     * Constructor for the Ritviksiddha Penchala class.
      * Constructors are special methods with the same exact name as the class name.  
      * Constructors to not have return types.
      * Constructors can be overloaded. This means we can call a constructor with different sets of parameter
@@ -48,6 +48,7 @@ public class RitviksiddhaPenchala extends Student
      * Default constructor, if you don't pass in a name and seating location
      * Pay attention to how the row and seat variables set the location of the image.  1,1 is the first cell in the upper left
      * of the classroom.
+     * This is the constructor that is prefereed as it has all the specific details about this class and specific file references.
      */
     public RitviksiddhaPenchala() {
         firstName="Ritviksiddha";
@@ -56,10 +57,11 @@ public class RitviksiddhaPenchala extends Student
         mySeat=5;
        // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
        portraitFile="bad_pic_of_rit.jpg";
-       //standingFile="trash_walk.PNG";
+       standingFile="trash_walk.PNG";
         soundFile="ritviksiddhapenchala.wav";
         setImage(portraitFile);
         sitting=true;
+       // add to numStudents int from the Student class to keep count of the class size
        numStudents ++;
        System.out.println(numStudents);
     }
@@ -67,24 +69,22 @@ public class RitviksiddhaPenchala extends Student
      /**
      * Act - do whatever the KilgoreTrout actor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
+     * It will only carry out the movement and answer questions once it has been "clicked" on. 
      */   
     public void act() 
     {
-        // Add your action code here.
+       
         if(Greenfoot.mouseClicked(this)){
             if (sitting){
                 sitting=false;
-                //setImage(standingFile);
+                setImage(standingFile);
                 System.out.println(""); // Print a blank line to create space between any student output.
                 getName();
                 sayName(soundFile);
             
-                myHobby("I like to eat!!");
-            // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
-            // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
-            // Call the sitDown() method to move back  to your seat
+                myHobby("I like to play videogames!");
             
-                circleClass();  // Kilgore Trount's special method... Please write one of your own. You can use this, but please modify it and be creative.
+                randomMovement();  // Movement method specific to RitviksiddhaPenchala
             }
             else {
                 answerQuestion();
@@ -102,15 +102,16 @@ public class RitviksiddhaPenchala extends Student
     }
     /**
      * This method needs to allow the user to interact with the student through a question and answer interface, and provide
-     * some mechanism that allows the student to sit down once the Q&A session ends.  You can use this basic model, or come up
-     * with some additional class and object that represents a blackboard, or a talking cartoon bubble etc. If you provide extra
-     * classes, make sure to fully document so other students can use the same interface.
+     * some mechanism that allows the student to sit down once the Q&A session ends.  
+     * 
+     * The original method has been changed so that it is looped until some kind of resolution is reached in the conversation. In addition, there is now second-level questioning about the summer homework concepts.
      */
     public void answerQuestion(){
         String q=Greenfoot.ask("What would you like to know?");
         boolean answered = false;
         boolean concept_check_complete = false;
         while(!answered){
+            // the summer hw loop
             if (q.contains("hard")){
                 concept_check_complete = false;
                 q=Greenfoot.ask("I thought that concepts like abstract classes, sort algorithms, and search algorithms. Ask me something about these concepts...");
@@ -129,43 +130,56 @@ public class RitviksiddhaPenchala extends Student
                     }
                 }
             } else if(q.contains("language")){
+                // what programming languages do I use
                 q=Greenfoot.ask("I use JavaScript most frequently, but Java was the first language I learne when I first started coding years ago. What would you like to know?");
             } else if(q.contains("hobbies")){
+                // hobbies
                 q=Greenfoot.ask("My hobbies include coding, playing videogames, robotics, reading, watching TV, and listening to music. What would you like to know?");
+            } else if(q.contains("students")){
+                // uses the private numStudents int from the Students class
+                q=Greenfoot.ask("There are " + numStudents + " students in the class. What would you like to know?");
             }else {
+                // default question asked so the conversation keeps going
               q=Greenfoot.ask("I don't understand the question... May I sit down?"); 
             }
              if (q.equals("yes")){
+                 // only sits when the user wants it to
                 Greenfoot.delay(10);
                 sitDown();
                 answered=true;
             } else if(q.equals("no")){
+                // back to start of loop if the user says don't sit
                 q = Greenfoot.ask("What would you like to know?");
             }
         }
     }
     /**
-     * This is a local method specific to the KilgoreTrout class used to animate the character once the image is clicked on.
-     * You can write your own methods to perform your own animation for your character/avatar.
+     * This is the movement method used only for RitviksiddhaPenchala
+     * It will make the sprite randomly jump around the screen and then randomize the transparency and size in each state (using 2DArrays)
      */
-    public void circleClass(){
+    public void randomMovement(){
        
        Greenfoot.delay(5);
        
+       // Fill a 2DArray with random values for size 
        int[][] positions = new int[15][15];
        for(int x =0; x<positions.length; x++){
            for(int y = 0; y < positions[x].length; y++){
-               positions[x][y] = (int)(Math.random() * ((1000 - 50) + 1)) + 1;
+               positions[x][y] = (int)(Math.random() * ((1000 - 50) + 1)) + 50;
             }
         }
         
         GreenfootImage rit_img = getImage();
+        // actual movement
         for(int i = 0; i<50; i++){
+            // random size in each location
             int x = (int)(Math.random() * ((10 - 1) + 1)) + 1;
             int y = (int)(Math.random() * ((6 - 1) + 1)) + 1;
+            // random location
             setLocation(x,y);
             Greenfoot.delay(5);
             rit_img.scale(positions[x][y], positions[y][x]);
+            // random transparency (from 2DArray)
             rit_img.setTransparency((int)(Math.random() * ((255 - 1) + 1)) + 1);
         }
          rit_img.setTransparency(255);
