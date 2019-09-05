@@ -7,11 +7,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Gene Pan
  * @version 1.0 Aug 26, 2019
  */
-public class GenePan extends Student implements SpecialInterestOrHobby
+public class GenePan extends Student implements SpecialInterestOrHobby, StudentLeadership
 {
     private String actionFile; //sets the image for part of the behavior
     private int actionM[][] = new int[3][3]; //sets a 3x3 2d array for the action behavior
     private boolean followUp = false;
+    
     
     /**
      * Constructor for the Gene Pan class.
@@ -65,6 +66,7 @@ public class GenePan extends Student implements SpecialInterestOrHobby
                 sayName(soundFile);
             
                 myHobby("I like to sleep!");
+                myRoleInLeadership();
                 goPoof();  // Gene Pan's unique method. I disappear with a comic-like "poof"
             }
             else {
@@ -197,5 +199,10 @@ public class GenePan extends Student implements SpecialInterestOrHobby
     public void myHobby(String s) {
          System.out.println(s);
     }
-
+    /**
+     * This method implements an interface StudentLeadership to say my experience in student leadership.
+     */
+    public void myRoleInLeadership() {
+        System.out.println("I was a robotics captain!");
+    }
 }
