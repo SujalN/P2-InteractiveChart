@@ -9,10 +9,6 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
 
     /**
      * Constructor for the DaylenBoen class.
-     * Constructors are special methods with the same exact name as the class name.  
-     * Constructors to not have return types.
-     * Constructors can be overloaded. This means we can call a constructor with different sets of parameter
-     *  lists to initalize for different conditions (depending on what constructors have been written.
      * @param String f (firstname)
      * @param String l (lastname)
      * @param int r (row of seating arrangement)
@@ -54,7 +50,7 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
      */   
     public void act() 
     {
-        // Add your action code here.
+        
         if(Greenfoot.mouseClicked(this)){
             if (sitting){
                 sitting=false;
@@ -64,15 +60,12 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
                 sayName(soundFile);
             
                 myHobby("I read a lot of comic books...");
-            // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
-            // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
-            // Call the sitDown() method to move back  to your seat
             
                 slideClass();  // Own personal movement class
             }
             else {
-                answerQuestion();
-                sitDown();
+                answerQuestion(); //calls conversation
+                sitDown(); //sits down character
             }
                     
         }
@@ -85,10 +78,8 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
         System.out.println("My name is " + firstName + " " + lastName);
     }
     /**
-     * This method needs to allow the user to interact with the student through a question and answer interface, and provide
-     * some mechanism that allows the student to sit down once the Q&A session ends.  You can use this basic model, or come up
-     * with some additional class and object that represents a blackboard, or a talking cartoon bubble etc. If you provide extra
-     * classes, make sure to fully document so other students can use the same interface.
+     * Method that deals with conversation. Uses if/else chains and recursion to create a continuous flow.
+     * NumberOfSiblings implemented here
      */
     public void answerQuestion(){
         String q=Greenfoot.ask("What would you like to know");
@@ -158,8 +149,7 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
     }
     
     /**
-     * This is a local method specific to the KilgoreTrout class used to animate the character once the image is clicked on.
-     * You can write your own methods to perform your own animation for your character/avatar.
+     * Method that performs an animation once image is clicked. Iterates through 2D arrays to deal with movement, and math.random for a random rotation.
      */
     public void slideClass(){
         int tempRow; //used to change row of image
@@ -167,6 +157,7 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
         //Math.random is used to generate a random number with a minium of row, column 1,1 and a maximum of row, column 7, 7. It is used
         //to place my profile picture randomly in the classroom. It is also used to set my rotation randomly each time I change.
         int [][] seatLayout = new int[10][5]; //declaring a 2d array with rough estimates of the dimension of the classroom
+        
         for (int i = 0; i < 10; i++) {
             setRotation((int)(Math.random() * 360));
             for (int j = 0; j < 10; j++) {
@@ -187,9 +178,8 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
                 setLocation(tempRow,tempSeat);
             }
         }
-        
         setRotation(0); //makes image go back to original rotation
-        
+
     }
      public void myHobby(String s) {
          System.out.println(s);
