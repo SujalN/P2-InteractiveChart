@@ -6,7 +6,7 @@ import java.lang.Math;
  * @author Jonathan Wang
  * @version 1.3
  */
-public class JonathanWang extends Student implements SpecialInterestOrHobby
+public class JonathanWang extends Student implements SpecialInterestOrHobby, StudentAthlete
 {
 
     /**
@@ -64,7 +64,9 @@ public class JonathanWang extends Student implements SpecialInterestOrHobby
                 getName();
                 sayName(soundFile);
             
-                myHobby("I like to play badminton and go swimming!");
+                myHobby("I like to play badminton and take part in baking!");
+                mySport("I also like to go swimming!");
+         
             // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
             // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
             // Call the sitDown() method to move back  to your seat
@@ -199,4 +201,11 @@ public class JonathanWang extends Student implements SpecialInterestOrHobby
          System.out.println(s);
                                       
         }
+    /**
+     * Prints the sport of the student into the terminal.
+     * The method is called in the act() method.
+     */
+    public void mySport(String mySportSentence) {
+        System.out.println(mySportSentence);
+    }
     } 
