@@ -167,10 +167,8 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
         //Math.random is used to generate a random number with a minium of row, column 1,1 and a maximum of row, column 7, 7. It is used
         //to place my profile picture randomly in the classroom. It is also used to set my rotation randomly each time I change.
         int [][] seatLayout = new int[10][5]; //declaring a 2d array with rough estimates of the dimension of the classroom
-        
-        setRotation((int)(Math.random() * 359 + 1)); //uses Math.random to set rotation to a random number of degrees
-        //iterates through array to make image move up to down
         for (int i = 0; i < 10; i++) {
+            setRotation((int)(Math.random() * 360));
             for (int j = 0; j < 10; j++) {
                 tempRow = i;
                 tempSeat = j;
@@ -180,9 +178,8 @@ public class DaylenBoen extends Student implements SpecialInterestOrHobby, Numbe
         }
         
         
-        setRotation((int)(Math.random() * 359 + 1));//uses Math.random to set rotation to a random number of degrees
-        //iterates through array to make image move right to left until it is back at original seat
         for (int j = 5; j >= myRow; j--) {
+            setRotation((int)(Math.random() * 360));
             for (int i = 10; i >= mySeat; i--) {
                 tempRow = i;
                 tempSeat = j;
