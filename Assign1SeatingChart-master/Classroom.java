@@ -4,22 +4,22 @@ import java.util.ArrayList;
  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  
 /**
- * Write a description of class Classroom here.
+ * World Classroom sets the background to be a continuous size.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Derek Xu
+ * @version September 8, 2019
  */
 public class Classroom extends World
 {
     private ArrayList<Object> listo = new ArrayList<Object>();
     /**
      * Constructor for objects of class Classroom.
-     * 
+     * sets to a certain number of pixels
      */
     public Classroom()
     {    
         // Create a new world with 10x6 cells with a cell size of 130x130 pixels.
-        super(10, 6, 130); 
+        super(10, 6, 130);
 
         prepare();
     }
@@ -40,7 +40,7 @@ public class Classroom extends World
         kilgoretrout.sitDown();
         
         DerekXu derekxu = new DerekXu("Derek", "Xu", 5, 4);
-        addObject(derekxu, 5, 4);
+        addObject(derekxu, 5, 4 );
         derekxu.sitDown();
     }  
 }

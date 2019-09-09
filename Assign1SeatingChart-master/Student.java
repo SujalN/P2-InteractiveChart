@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class Student here.
+ * Student class sets up instance variables and methods to be called.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Derek Xu
+ * @version September 8, 2019
  */
 public abstract class Student extends Actor
 {
