@@ -7,12 +7,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Gene Pan
  * @version 1.0 Aug 26, 2019
  */
-public class GenePan extends Student implements SpecialInterestOrHobby, StudentLeadership
+public class GenePan extends Student implements SpecialInterestOrHobby, NumberOfSiblings
 {
     private String actionFile; //sets the image for part of the behavior
     private int actionM[][] = new int[3][3]; //sets a 3x3 2d array for the action behavior
     private boolean followUp = false;
-    
+    private int siblings = 2;
+    private int brothers = 1;
+    private int sisters = 1;
     
     /**
      * Constructor for the Gene Pan class.
@@ -66,7 +68,7 @@ public class GenePan extends Student implements SpecialInterestOrHobby, StudentL
                 sayName(soundFile);
             
                 myHobby("I like to sleep!");
-                myRoleInLeadership();
+                FamilyMembers();
                 goPoof();  // Gene Pan's unique method. I disappear with a comic-like "poof"
             }
             else {
@@ -101,6 +103,10 @@ public class GenePan extends Student implements SpecialInterestOrHobby, StudentL
         //the below question does not have a follow up questions
         else if (q.contains("day")){ //How's your day?
             q=Greenfoot.ask("Good enough. I finished AP Physics for the day... May I sit down?");
+            
+        }
+        else if (q.contains("many")){ //How's your day?
+            q=Greenfoot.ask("There are " + numStudents + " students in this class. May I sit down?");
             
         }
         else {
@@ -200,9 +206,23 @@ public class GenePan extends Student implements SpecialInterestOrHobby, StudentL
          System.out.println(s);
     }
     /**
-     * This method implements an interface StudentLeadership to say my experience in student leadership.
+     * This method implements an interface NumberoOfSiblings to call upon private variables to know how many siblings I have
      */
-    public void myRoleInLeadership() {
-        System.out.println("I was a robotics captain!");
+    public void FamilyMembers() {
+        System.out.println("I have " + numberOfSiblings() + " siblings: " + numberOfBrothers() + " brother, and " + numberOfSisters() + " sister." );
     }
+    
+    //returns private variable siblings
+    public int numberOfSiblings(){
+        return siblings;
+    }
+    //returns private variable brothers
+    public int numberOfBrothers(){
+        return brothers;
+    }
+    //returns private variable sisters
+    public int numberOfSisters(){
+        return sisters;
+    }
+    
 }
