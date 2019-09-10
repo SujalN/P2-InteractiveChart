@@ -14,7 +14,7 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
      * Constructors are special methods with the same exact name as the class name.  
      * Constructors to not have return types.
      * Constructors can be overloaded. This means we can call a constructor with different sets of parameter
-     * lists to initalize for different conditions (depending on what constructors have been written.
+     *  lists to initalize for different conditions (depending on what constructors have been written.
      * @param String f (firstname)
      * @param String l (lastname)
      * @param int r (row of seating arrangement)

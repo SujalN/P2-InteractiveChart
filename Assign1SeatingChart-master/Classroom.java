@@ -6,13 +6,12 @@ import java.util.ArrayList;
 /**
  * Write a description of class Classroom here.
  * 
- * @Gene Pan
- * @1.0
+ * @author (your name) 
+ * @version (a version number or a date)
  */
 public class Classroom extends World
 {
     private ArrayList<Object> listo = new ArrayList<Object>();
-    
     /**
      * Constructor for objects of class Classroom.
      * 
@@ -40,9 +39,7 @@ public class Classroom extends World
         addObject(kilgoretrout, 1, 1);
         kilgoretrout.sitDown();
          
-        GenePan genepan = new GenePan("Gene", "Pan", 3, 3);
-        addObject(genepan, 3, 3);
-        genepan.sitDown();
+        
 
 
     }  
