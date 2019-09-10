@@ -6,11 +6,11 @@ import java.util.ArrayList;
  * @author Mr. Kaehms
  * @version 2.0 Aug 13, 2019
  */
-public class LacPhongNguyen extends Student implements SpecialInterestOrHobby
+public class LacPhongNguyen extends Student implements SpecialInterestOrHobby, NumberOfSiblings
 {
 
     /**
-     * Constructor for the KilgoreTrout class.
+     * Constructor for the LacPhongNguyen class.
      * Constructors are special methods with the same exact name as the class name.  
      * Constructors to not have return types.
      * Constructors can be overloaded. This means we can call a constructor with different sets of parameter
@@ -51,7 +51,7 @@ public class LacPhongNguyen extends Student implements SpecialInterestOrHobby
     }
     
      /**
-     * Act - do whatever the KilgoreTrout actor wants to do. This method is called whenever
+     * Act - do whatever the LacPhongNguyen actor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */   
     public void act() 
@@ -65,16 +65,15 @@ public class LacPhongNguyen extends Student implements SpecialInterestOrHobby
                 getName();
                 sayName(soundFile);
             
-                myHobby("I like to time travel!");
-            // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
-            // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
+                myHobby("I like to play basketball, volleyball, and Nintendo games!");
+            // Create a "special method for your class and put the call here.
             // Call the sitDown() method to move back  to your seat
             
-                circleClass();  // Kilgore Trount's special method... Please write one of your own. You can use this, but please modify it and be creative.
+                circleClass();  // LacPhongNguyen's special method... Please write one of your own. You can use this, but please modify it and be creative.
             }
             else {
-                answerQuestion();
-                sitDown();
+                answerQuestion();//calls answerQuestion method, just prompts the user to ask Lac-Phong questions
+                sitDown();//calls sitDown method to make LacPhong Nguyen sit down
             }
                     
         }
@@ -84,7 +83,19 @@ public class LacPhongNguyen extends Student implements SpecialInterestOrHobby
      * Prints the first and last name to the console
      */
     public void getName(){
-        System.out.println("I " + firstName + " " + lastName+ " have a dream");
+        System.out.println("I " + firstName + " " + lastName+ " have a dream");//introduces LacPhong Nguyen
+    }
+    /**
+     * These are methods called from the interface NumberOfSiblings
+     */
+    public int numberOfSiblings(){
+        return 2;//number of siblings LacPhong has
+    }
+    public int numberOfBrothers(){
+        return 1;//number of brothers LacPhong has
+    }
+    public int numberOfSisters(){
+        return 1;//number of sisters LacPhong has
     }
     /**
      * This method needs to allow the user to interact with the student through a question and answer interface, and provide
@@ -93,27 +104,113 @@ public class LacPhongNguyen extends Student implements SpecialInterestOrHobby
      * classes, make sure to fully document so other students can use the same interface.
      */
     public void answerQuestion(){
-        String q=Greenfoot.ask("What would you like to know");
-        if (q.contains("hard")){
-            q=Greenfoot.ask("2D arrays, recursion, and merge sort... May I sit down?");
+        String q=Greenfoot.ask("What would you like to know?");//asks user what he/she/it would like to know
+        q.toLowerCase();//makes answers all lowercase
+        if (q.contains("hard")){//lists all the stuff LacPhong found hard about the CSA summer hw
+            q=Greenfoot.ask("I found inheritance a bit confusing as well as the binary and merge sorts, interfaces, recursion, and DeMorgan's Law... May I sit down?");
             q.toLowerCase();
+            if (q.contains("inheritance")){//if user specifically mentions inheritance LacPhong will explain
+                q=Greenfoot.ask("Inheritance is a mechanism in Java where a subclass will inherit the characteristics of its superclass. The way the teacher was explaining it was a little hard to understand and I had to replay the videos several times because it was so hard to pay attention to her... May I sit down?");
+                q.toLowerCase();
+                if (q.contains("yes")){//if user allows LacPhong to sit down, LacPhong sits down
+                    Greenfoot.delay(10);//delays code
+                    sitDown();
+                }
+                else {//if user inputs none of the above it will reexecute answerQuestion method
+                answerQuestion();
+            }
+            }
+            if (q.contains("binary")||q.contains("merge")){
+                q=Greenfoot.ask("Binary Search is a way to sort an array through repeatedly dividing the search interval half. A merge sort is a divide and conquer algorithm where it divides the array into two halfs repeatedly until the array is fully sorted... May I sit down?");
+                q.toLowerCase();
+                if (q.contains("yes")){
+                    Greenfoot.delay(10);
+                    sitDown();
+                }
+                else {
+                answerQuestion();
+            }
+            }
+            if (q.contains("interface")){//if user mentions interface
+                q=Greenfoot.ask("The interface is a mechanism in java that serves as a blueprint of a class which contains static constants and abstract methods. They can only contain abstract methods... May I sit down?");
+                q.toLowerCase();
+                if (q.contains("yes")){
+                    Greenfoot.delay(10);
+                    sitDown();
+                }
+                else {
+                    answerQuestion();
+                }
+            }
+            if (q.contains("recursion")){//if user mentions recursion
+                q=Greenfoot.ask("Recursion is the process in which a method calls itself continuously. This makes the code more comact, but somewhat more complex to understand... May I sit down?");
+                q.toLowerCase();
+                if (q.contains("yes")){
+                    Greenfoot.delay(10);
+                    sitDown();
+                }
+                else {
+                    answerQuestion();
+                }
+            }
+            if (q.contains("demorgan")){//if user mentions demorgan
+                q=Greenfoot.ask("Demorgan's Law basically describes how mathematical statements and concepts are related through their opposites. This was a little confusing to me because some interactions between certain symbols like greater than and less than were a bit confusing... May I sit down?");
+                q.toLowerCase();
+                if (q.contains("yes")){
+                    Greenfoot.delay(10);
+                    sitDown();
+                }
+                else {
+                    answerQuestion();
+                }
+            }
         }
-        if (q.contains("yes")){
-            sitDown();
+        if (q.contains("siblings")){//if user mentions siblings, code utilizes interface NumberOfSiblings to answer
+            q=Greenfoot.ask("I have " + numberOfSiblings() + " but I like to consider by 2 other cousins as siblings because I have lived with them for my entire life... May I sit down?");
+            q.toLowerCase();
+            if (q.equals("yes")){
+                Greenfoot.delay(10);
+                sitDown();
+            }
+            else {
+                answerQuestion();
+            }
         }
-        if ((q.contains("hi"))||(q.contains("hello"))){
+        if (q.contains("brother")){//if user mentions brother, code utilizes interface NumberOfSiblings to answer
+            q=Greenfoot.ask("I have only " + numberOfBrothers() + " brother... May I sit down?");
+            q.toLowerCase();
+            if (q.equals("yes")){
+                Greenfoot.delay(10);
+                sitDown();
+            }
+            else {
+                answerQuestion();
+            }
+        }
+        if (q.contains("sister")){//if user mentions sister, code utilizes interface NumberOfSiblings to answer
+            q=Greenfoot.ask("I have only " + numberOfSisters() + " sister... May I sit down?");
+            q.toLowerCase();
+            if (q.equals("yes")){
+                Greenfoot.delay(10);
+                sitDown();
+            }
+            else {
+                answerQuestion();
+            }
+        }
+        if ((q.contains("hi"))||(q.contains("hello"))){//if user says hi or hello, LacPhong responds
             q=Greenfoot.ask("Well hello there! I'm Lac-Phong Nguyen. How are you?");
             q.toLowerCase();
-            if (q.contains("good")){
+            if (q.contains("good")){//if user says they're doing good LacPhpong responds
                 q=Greenfoot.ask("Cool, but I don't care.");
                 sitDown();
             }
-            if (q.contains("bad")){
+            if (q.contains("bad")){//if user says they're doing bad LacPhong responds
                 q=Greenfoot.ask("Feelsbadman. Sucks to be you :P");
                 sitDown();
             }
         }
-        else {
+        else {//if user doesn't input any of the above LacPhong responds
           q=Greenfoot.ask("I don't understand the question... May I sit down?"); 
             if (q.equals("yes")){
                 Greenfoot.delay(10);
@@ -128,49 +225,61 @@ public class LacPhongNguyen extends Student implements SpecialInterestOrHobby
         
     }
     /**
-     * This is a local method specific to the KilgoreTrout class used to animate the character once the image is clicked on.
+     * This is a local method specific to the LacPhong class used to animate the character once the image is clicked on.
      * You can write your own methods to perform your own animation for your character/avatar.
      */
     public void circleClass(){
-        int[][] list = new int[10][10];
-        for (int i=0;i<10;i++){
+        int[][] list = new int[10][10];//creates a 2d array named list
+        for (int i=0;i<10;i++){//loops through list and adds in random integers
             for (int n=0;n<10;n++){
-            list[i][n] = (int)Math.random()*10+1;
+            list[i][n] = (int)Math.random()*10+1;//Math.random from 1-10
         }
        }
-        setLocation(1,3);
+        setLocation(1,3);//sets LacPhong to coordinate (1,3)
         Greenfoot.delay(10);
         // move right
         for (int i=1;i<=9;i++){
-            setLocation(i,3);
-            turn(100);
+            setLocation(i,3);//iterates through x values from 1-9
+            turn(100);//spins LacPhong
             Greenfoot.delay(6);
         }
         // move back
         for (int i=5;i<=5;i++){
-            setLocation(9,i);
-            turn(100);
+            setLocation(9,i);//iterates through y values
+            turn(100);//turns LacPhong
             Greenfoot.delay(6);
         }      
          // move left
         for (int i=5;i>=1;i--){
-            setLocation(i,5);
-            turn(100);
+            setLocation(i,5);//iterates through x values backwards from 5-1
+            turn(100);//turns LacPhong
             Greenfoot.delay(6);
         }      
               // move Forward
         for (int i=5;i>=3;i--){
-            setLocation(1,i);
-            turn(100);
+            setLocation(1,i);//iterates through y values backwards from 5-3
+            turn(100);//turns LacPhong
             Greenfoot.delay(6);
         }
         for (int i=0; i<10;i++){
-            turn(list[(int)Math.random()*10+1][(int)Math.random()*10+1]);
+            turn(list[i][i]);//iterates through the 2d array list for random values to make LacPhpong spin
+            Greenfoot.delay(6);
+            turn(-(list[i][i]));//iterates through the 2d array list for random values to make LacPhpong spin
             Greenfoot.delay(6);
         }
-        Greenfoot.delay(20);
-        returnToSeat();
-    
+        
+        for (int i=0; i<25;i++){
+            returnToSeat(list[5][5]);
+            GreenfootImage image = getImage();//gets image for Greenfoot
+            image.scale((image.getWidth()+3),(image.getHeight()+3));//makes images grow
+            Greenfoot.delay(6);
+            returnToSeat(-(list[5][5]));//returns LacPhong to original orientation
+            Greenfoot.delay(6);
+            
+            
+        }
+        
+        
 }
      public void myHobby(String s) {
          System.out.println(s);
