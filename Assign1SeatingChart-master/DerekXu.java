@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Derek Xu
  * @version September 9, 2019
  */
-public class DerekXu extends Student implements SpecialInterestOrHobby
+public class DerekXu extends Student implements SpecialInterestOrHobby, StudentLeadership
 {   
     //initiate global variables
     public String standingFile1;
